@@ -1,5 +1,7 @@
 package main.java.Algorithms;
 
+import java.util.*;
+
 public class CustomLinkedList {
 	Node head;
 	
@@ -53,5 +55,20 @@ public class CustomLinkedList {
 			second = second.next;
 		}
 		first.next = first.next.next;
+	}
+	
+	public Boolean hasCycle() {
+		HashSet<Node> hashSet = new HashSet<>();
+		Node current = head;
+		
+		while (current != null) {
+			if (hashSet.contains(current)) {
+				return true;
+			}
+			hashSet.add(current);
+			current = current.next;
+		}
+		
+		return false;
 	}
 }
